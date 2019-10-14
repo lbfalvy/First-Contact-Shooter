@@ -11,7 +11,8 @@ public class BulletController : NetworkBehaviour
     }
 
     void CollideOnServer(Collision col) {
-        ShipControl shipControl = col.transform.GetComponentInParent<ShipControl>();
+        Transform otherTf = col.transform;
+        ShipControl shipControl = otherTf.GetComponentInParent<ShipControl>();
         if (shipControl != null)
             shipControl.GetComponent<NetworkPlayer>().takeDamage(100);
     }
